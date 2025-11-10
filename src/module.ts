@@ -1,7 +1,8 @@
-import { defineNuxtModule, addPlugin, createResolver } from '@nuxt/kit'
+import { defineNuxtModule, addPlugin, createResolver, addImportsDir } from '@nuxt/kit'
 import { existsSync, mkdirSync, readdirSync, writeFileSync } from 'node:fs'
 import { join, parse, relative } from 'pathe'
 import { setupDevToolsUI } from './devtools'
+import { fileURLToPath } from 'node:url'
 
 function pascalToCamel(str: string) {
   return str.charAt(0).toLowerCase() + str.slice(1)
@@ -17,7 +18,7 @@ function getVueFiles(dir: string): string[] {
 }
 
 // Module options TypeScript interface definition
-export interface ModuleOptions {
+export type ModuleOptions = {
   /**
    * Enable Nuxt Devtools integration
    *
@@ -48,6 +49,8 @@ export default defineNuxtModule<ModuleOptions>({
     const outputDir = join(moduleDir, '/runtime/generated')
 
     const outputFile = join(outputDir, 'components-mapping.ts')
+
+    addImportsDir(resolver.resolve('./runtime/composables'))
 
     if (!existsSync(outputDir)) mkdirSync(outputDir)
 
@@ -90,7 +93,7 @@ export default defineNuxtModule<ModuleOptions>({
       .join('\n')
 
     const propsEntries = componentData
-      .map((c) => `  ${c.key}: ${c.hasProps ? `${c.name}Props` : 'undefined'};`)
+      .map((c) => `  ${c.key}: ${c.hasProps ? `${c.name}Props` : 'undefined'}`)
       .join('\n')
 
     const mappingEntries = componentData.map((c) => `  ${c.key}: ${c.name},`).join('\n')
@@ -101,7 +104,7 @@ export default defineNuxtModule<ModuleOptions>({
       ${vueImports}
       ${propsImports}
 
-      export type ComponentsKey = ${keys};
+      export type ComponentsKey = ${keys}
 
       export type ComponentPropsMap = {
       ${propsEntries}

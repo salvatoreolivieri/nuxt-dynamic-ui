@@ -9,7 +9,7 @@ import {
 /**
  * The component entry format which encapsulates the component name, its props and unique key ID.
  */
-type ComponentEntry = {
+export type ComponentEntry = {
   component: Component
   props: Record<string, any> | undefined
   id: string

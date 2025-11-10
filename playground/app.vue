@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { useDynamicUI } from '../src/runtime/composables/useDynamicUI'
+import { useDynamicUI } from '#imports'
 
 const { generateComponent } = useDynamicUI()
 const { component, props } = generateComponent('testComponent', {
