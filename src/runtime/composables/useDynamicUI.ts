@@ -1,24 +1,9 @@
-import type { Component } from 'vue'
-
+import type { ComponentEntry } from '../../types'
 import {
   componentsMapping,
   type ComponentPropsMap,
   type ComponentsKey,
 } from '../generated/components-mapping'
-
-/**
- * The component entry format which encapsulates the component name, its props and unique key ID.
- */
-export type ComponentEntry = {
-  component: Component
-  props: Record<string, any> | undefined
-  id: string
-}
-
-/**
- * Defines the structure of the content to be rendered on a page.
- */
-export type PageContent = Array<ComponentEntry>
 
 /**
  * Simple deterministic hash function for strings

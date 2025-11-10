@@ -18,6 +18,7 @@ function getVueFiles(dir: string): string[] {
 }
 
 // Module options TypeScript interface definition
+export type { ComponentEntry, PageContent } from './types'
 export type ModuleOptions = {
   /**
    * Enable Nuxt Devtools integration
@@ -27,8 +28,6 @@ export type ModuleOptions = {
   devtools: boolean
   /**
    * Component Dir to scan
-   *
-   * @default ['~/components']
    */
   targetDirs: string[]
 }
@@ -41,9 +40,10 @@ export default defineNuxtModule<ModuleOptions>({
   // Default configuration options of the Nuxt module
   defaults: {
     devtools: true,
-    targetDirs: ['components'],
   },
   setup(options, nuxt) {
+    if (!options.targetDirs || !options.targetDirs.length) return
+
     const resolver = createResolver(import.meta.url)
     const moduleDir = resolver.resolve('.') // or dirname of import.meta.url
     const outputDir = join(moduleDir, '/runtime/generated')
