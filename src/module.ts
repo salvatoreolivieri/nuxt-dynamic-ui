@@ -52,7 +52,7 @@ export default defineNuxtModule<ModuleOptions>({
     if (!existsSync(outputDir)) mkdirSync(outputDir)
 
     // 1️⃣ Collect .vue files
-    const files = options.targetDirs.flatMap((dir) => {
+    const files = options.targetDirs?.flatMap((dir) => {
       const fullPath = join(nuxt.options.rootDir, dir)
       if (!existsSync(fullPath)) return []
       return getVueFiles(fullPath)

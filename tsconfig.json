@@ -1,3 +1,4 @@
 {
-  "extends": "./client/.nuxt/tsconfig.json"
+  "extends": "./client/.nuxt/tsconfig.json",
+  "include": ["src", "nuxt.config.ts"]
 }
