@@ -1,6 +1,6 @@
 {
   "name": "nuxt-dynamic-ui",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A lightweight Nuxt module for dynamically mapping and rendering Vue components from configurable directories. It auto-generates a type-safe component registry and provides a composable (useDynamicUi) to build data-driven interfaces at runtime.",
   "license": "MIT",
   "type": "module",
