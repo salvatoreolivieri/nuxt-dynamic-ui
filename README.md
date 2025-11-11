@@ -18,6 +18,10 @@ A lightweight Nuxt module for dynamically mapping and rendering Vue components f
 
 It follow the Dynamic [Components Design Pattern](https://www.patterns.dev/vue/dynamic-components/). This approach allows us to render components dynamically at runtime based on configuration, making the system more flexible and easier to extend.
 
+👇🏻 Here my video where I explain in detail how to use it, how I created it and why I designed it 👇🏻
+
+[![Watch the video](https://img.youtube.com/vi/Zg3kdse9BdY/0.jpg)](https://youtu.be/Zg3kdse9BdY)
+
 ## Features
 
 <!-- Highlight some of the features your module provide here -->
@@ -137,22 +141,21 @@ The core composable provided by the module is `useDynamicUI`. It lets you genera
 
 ```html
 <script setup lang="ts">
-import type { PageContent } from "nuxt-dynamic-ui"
+  import type { PageContent } from 'nuxt-dynamic-ui'
 
-const { generateComponent } = useDynamicUI()
+  const { generateComponent } = useDynamicUI()
 
-const content = computed<PageContent>(() => [
-  generateComponent('testComponent', {
-    props: {
-      title: 'Placeholder Title',
-      description: 'This is a placeholder component'
-    }
-  }),
+  const content = computed<PageContent>(() => [
+    generateComponent('testComponent', {
+      props: {
+        title: 'Placeholder Title',
+        description: 'This is a placeholder component',
+      },
+    }),
 
-  // Add component here and extend page content
-  // ...
-])
-
+    // Add component here and extend page content
+    // ...
+  ])
 </script>
 
 <template>
@@ -213,44 +216,42 @@ The connector is an optional way to provide dynamic or computed props when gener
 
 ```html
 <script setup lang="ts">
-import type { PageContent } from "nuxt-dynamic-ui"
+  import type { PageContent } from 'nuxt-dynamic-ui'
 
-
-type RawData = {
-  name: string
-  description: string
-  media: {
-    thumbnail: string
-    video: string
+  type RawData = {
+    name: string
+    description: string
+    media: {
+      thumbnail: string
+      video: string
+    }
   }
-}
 
-const { generateComponent } = useDynamicUI()
+  const { generateComponent } = useDynamicUI()
 
-const rawData: RawData = {
-  name: "Name",
-  description: "Description",
-  media: {
-    thumbnail: demoPlatform,
-    video: "https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb",
-  },
-}
-
-function mapRawData(input: RawData): HomeHeroProps {
-  return {
-    title: input?.name ?? "",
-    subtitle: input?.description ?? "",
-    thumbnailSrc: input?.media.thumbnail ?? "",
-    videoSrc: input?.media.video ?? "",
+  const rawData: RawData = {
+    name: 'Name',
+    description: 'Description',
+    media: {
+      thumbnail: demoPlatform,
+      video: 'https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb',
+    },
   }
-}
 
-const content = computed<PageContent>(() => [
-  generateComponent("homeHero", {
-    connector: mapRawData(rawData),
-  }),
-])
+  function mapRawData(input: RawData): HomeHeroProps {
+    return {
+      title: input?.name ?? '',
+      subtitle: input?.description ?? '',
+      thumbnailSrc: input?.media.thumbnail ?? '',
+      videoSrc: input?.media.video ?? '',
+    }
+  }
 
+  const content = computed<PageContent>(() => [
+    generateComponent('homeHero', {
+      connector: mapRawData(rawData),
+    }),
+  ])
 </script>
 
 <template>
@@ -267,10 +268,10 @@ const content = computed<PageContent>(() => [
 
 ### Rules
 
-1. If `props` is provided, it is used directly.  
-2. If `props` is not provided but `connector` is, `connector` will generate the props.  
+1. If `props` is provided, it is used directly.
+2. If `props` is not provided but `connector` is, `connector` will generate the props.
 3. `connector` can be either:
-   - A **function** returning the props  
+   - A **function** returning the props
    - A **direct object** (like `props`) but evaluated at generation time
 
 <!-- Badges -->
