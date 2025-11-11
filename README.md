@@ -25,12 +25,11 @@ It follow the Dynamic [Components Design Pattern](https://www.patterns.dev/vue/d
       alt="Watch on YouTube" 
       width="40"
     >
-    <span style="margin-left: 8px; font-size: 16px;">
+    <p style="margin-left: 8px; font-size: 16px;">
       🎥 Here’s my video where I explain in detail how to use it, how I created it, and why I designed it
-    </span>
+    </p>
   </a>
 </div>
-
 
 ## Features
 
