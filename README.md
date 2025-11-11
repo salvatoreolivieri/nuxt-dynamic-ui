@@ -18,9 +18,19 @@ A lightweight Nuxt module for dynamically mapping and rendering Vue components f
 
 It follow the Dynamic [Components Design Pattern](https://www.patterns.dev/vue/dynamic-components/). This approach allows us to render components dynamically at runtime based on configuration, making the system more flexible and easier to extend.
 
-👇🏻 Here my video where I explain in detail how to use it, how I created it and why I designed it 👇🏻
+<div style="display: flex; align-items: center; gap: 8px;">
+  <a href="https://youtu.be/Zg3kdse9BdY" target="_blank" style="display: flex; align-items: center; text-decoration: none;">
+    <img 
+      src="https://upload.wikimedia.org/wikipedia/commons/7/75/YouTube_social_white_squircle_(2017).svg" 
+      alt="Watch on YouTube" 
+      width="40"
+    >
+    <span style="margin-left: 8px; font-size: 16px;">
+      🎥 Here’s my video where I explain in detail how to use it, how I created it, and why I designed it
+    </span>
+  </a>
+</div>
 
-[![Watch the video](https://img.youtube.com/vi/Zg3kdse9BdY/0.jpg)](https://youtu.be/Zg3kdse9BdY)
 
 ## Features
 
